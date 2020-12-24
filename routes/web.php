@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,4 +29,7 @@ Route::middleware(['guest'])->group(function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('/', [ProductsController::class, 'index']);
     Route::post('/logout', [AuthController::class, 'logout']);
+
+    Route::get('/category/create', [CategoriesController::class, 'create']);
+    Route::post('/category/create', [CategoriesController::class, 'store']);
 });
