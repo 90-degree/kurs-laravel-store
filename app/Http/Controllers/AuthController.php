@@ -28,6 +28,7 @@ class AuthController extends Controller
             'body' => 'Wellcome ' . $user->name
         ];
         Mail::to($user->email)->send(new NewUserEmailTemplate($details));
+
         return redirect('/');
     }
 
@@ -42,12 +43,14 @@ class AuthController extends Controller
         if (Auth::attempt($credentials)) {
             return redirect('/');
         }
+
         return back()->withErrors(['password' => 'Wrong email or password']);
     }
 
     public function logout()
     {
         Auth::logout();
+
         return redirect('/');
     }
 }

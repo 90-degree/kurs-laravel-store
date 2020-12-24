@@ -38,6 +38,7 @@ class CategoriesController extends Controller
     {
         $data = $request->validated();
         Category::create($data);
+
         return back()->with(['successMessage' => $data['name'] . ' added to the categories list']);
     }
 
