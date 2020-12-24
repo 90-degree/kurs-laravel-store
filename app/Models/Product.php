@@ -12,9 +12,9 @@ class Product extends Model
     protected $fillable = ['name', 'description', 'isAvailable'];
 
 
-    public static function getAvailable()
+    public static function getAvailable($pages)
     {
-        return Product::where('isAvailable', 1)->get();
+        return Product::where('isAvailable', 1)->paginate($pages);
     }
 
     public function categories()

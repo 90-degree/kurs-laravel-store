@@ -5,10 +5,20 @@
 @section('main-content')
 <ul class="list-group">
     @foreach ($products as $product)
-        <li class="list-group-item">
-            <a href="{{ route('products.show', compact('product')) }}">{{ $product->title }}</a>
-            <p>{{ Str::substr($product->description, 0, 50) }}</p>
-        </li>
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h4 class="card-title">{{ $product->name }}</h4>
+                <hr>
+                <h6 class="card-subtitle mb-2 text-muted">
+                    @foreach ($product->categories as $category)
+                        <span>{{ $category->name }}</span>
+                    @endforeach
+                </h6>
+                <p class="card-text">{{ $product->description }}</p>
+                <a href="{{ route('products.edit', compact('product')) }}">Edit</a>
+            </div>
+        </div>
     @endforeach
+    {{ $products->links() }}
 </ul>
 @endsection

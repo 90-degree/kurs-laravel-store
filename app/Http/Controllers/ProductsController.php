@@ -16,7 +16,8 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        $products = Product::getAvailable();
+        $products = Product::getAvailable(5);
+
         return view('products.index', compact('products'));
     }
 
@@ -28,6 +29,7 @@ class ProductsController extends Controller
     public function create()
     {
         $categories = Category::all();
+
         return view('products.create', compact('categories'));
     }
 
@@ -66,7 +68,8 @@ class ProductsController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        $categories = Category::all();
+        return view('products.edit', compact('product', 'categories'));
     }
 
     /**
@@ -76,9 +79,15 @@ class ProductsController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product)
+    public function update(CreateProductRequest $request, Product $product)
     {
-        //
+        $data = $request->validated();
+        $categories = $request->get('categories');
+        $data['isAvailable'] = !!$request->get('isAvailable');
+        $product->update($data);
+        $product->categories()->sync($categories);
+
+        return redirect('/');
     }
 
     /**
