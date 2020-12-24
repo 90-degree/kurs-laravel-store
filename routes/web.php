@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,9 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
 
 Route::middleware(['guest'])->group(function () {
     Route::get('/login', [AuthController::class, 'loginForm'])->name('login');
@@ -27,5 +26,6 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::middleware(['auth'])->group(function () {
+    Route::get('/', [ProductsController::class, 'index']);
     Route::post('/logout', [AuthController::class, 'logout']);
 });

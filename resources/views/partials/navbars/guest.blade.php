@@ -1,8 +1,10 @@
 <ul class="navbar-nav me-auto">
 </ul>
-<form class="d-flex">
-    <button class="btn btn-outline-info" type="submit">Login</button>
-</form>
-<form class="d-flex">
-    <button class="btn btn-info" type="submit">Register</button>
-</form>
+<ul class="d-flex navbar-nav">
+    <li class="nav-item">
+        <a class="nav-link" href="/login">Login</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="/register">Register</a>
+    </li>
+</ul>

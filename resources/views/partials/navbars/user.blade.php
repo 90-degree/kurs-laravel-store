@@ -1,8 +1,10 @@
 <ul class="navbar-nav me-auto">
     <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="#">Add product</a>
     </li>
 </ul>
-<form class="d-flex">
-    <button class="btn btn-outline-info" type="submit">Logout</button>
+<form class="d-flex" action="/logout" method="POST">
+    @csrf
+    <label class="form-label me-md-2">{{ auth()->user()->name }}</label>
+    <button class="btn btn-outline-dark btn-sm" type="submit">Logout</button>
 </form>
