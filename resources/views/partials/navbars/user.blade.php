@@ -3,7 +3,7 @@
         <a class="nav-link" href="/category/create">Add category</a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="product/create">Add product</a>
+        <a class="nav-link" href="/product/create">Add product</a>
     </li>
 </ul>
 <form class="d-flex" action="/logout" method="POST">

@@ -6,7 +6,7 @@
 <ul class="list-group">
     @foreach ($products as $product)
         <li class="list-group-item">
-            <a href="{{ route('product.show', compact('product')) }}">{{ $product->title }}</a>
+            <a href="{{ route('products.show', compact('product')) }}">{{ $product->title }}</a>
             <p>{{ Str::substr($product->description, 0, 50) }}</p>
         </li>
     @endforeach

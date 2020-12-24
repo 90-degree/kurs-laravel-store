@@ -32,4 +32,9 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/category/create', [CategoriesController::class, 'create']);
     Route::post('/category/create', [CategoriesController::class, 'store']);
+
+    Route::get('/product/create', [ProductsController::class, 'create']);
+    Route::post('/product/create', [ProductsController::class, 'store']);
+
+    Route::get('/products/{product}', [ProductsController::class, 'show'])->name('products.show');
 });

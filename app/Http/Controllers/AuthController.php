@@ -32,8 +32,7 @@ class AuthController extends Controller
     public function login(LoginRequest $request)
     {
         $credentials = $request->validated();
-        $isSuccessful = Auth::attempt($credentials);
-        if ($isSuccessful) {
+        if (Auth::attempt($credentials)) {
             return redirect('/');
         }
         return back()->withErrors(['password' => 'Wrong email or password']);

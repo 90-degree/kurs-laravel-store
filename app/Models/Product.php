@@ -16,4 +16,9 @@ class Product extends Model
     {
         return Product::where('isAvailable', 1)->get();
     }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
 }
