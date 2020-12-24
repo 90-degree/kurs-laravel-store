@@ -5,8 +5,8 @@
 @section('main-content')
 <ul class="list-group">
     @foreach ($products as $product)
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
+        <div class="list-group">
+            <div class="list-group-item">
                 <h4 class="card-title">{{ $product->name }}</h4>
                 <hr>
                 <h6 class="card-subtitle mb-2 text-muted">

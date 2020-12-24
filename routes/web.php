@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\EmailsController;
 use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
