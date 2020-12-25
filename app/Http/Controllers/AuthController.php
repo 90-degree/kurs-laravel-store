@@ -22,12 +22,13 @@ class AuthController extends Controller
         $credentials = $request->validated();
         $credentials['password'] = bcrypt($credentials['password']);
         $user = User::create($credentials);
+        $user->roles()->attach(1);
         Auth::login($user);
-        $details = [
-            'title' => 'Mail from vivify-kurs',
-            'body' => 'Wellcome ' . $user->name
-        ];
-        Mail::to($user->email)->send(new NewUserEmailTemplate($details));
+        // $details = [
+        //     'title' => 'Mail from vivify-kurs',
+        //     'body' => 'Wellcome ' . $user->name
+        // ];
+        // Mail::to($user->email)->send(new NewUserEmailTemplate($details));
 
         return redirect('/');
     }

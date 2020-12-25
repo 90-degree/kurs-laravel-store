@@ -4,6 +4,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\EmailsController;
 use App\Http\Controllers\ProductsController;
+use App\Http\Controllers\RolesController;
+use App\Http\Controllers\UsersController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,4 +35,12 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/product/create', [ProductsController::class, 'store']);
     Route::get('/products/{product}', [ProductsController::class, 'edit'])->name('products.edit');
     Route::post('/products/{product}', [ProductsController::class, 'update'])->name('products.update');
+});
+
+Route::middleware(['admin'])->group(function () {
+    Route::get('/role/create', [RolesController::class, 'create']);
+    Route::post('/role/create', [RolesController::class, 'store']);
+    Route::get('/users', [UsersController::class, 'index']);
+    Route::get('/users/{user}', [UsersController::class, 'edit'])->name('users.edit');
+    Route::post('/users/{user}', [UsersController::class, 'update'])->name('users.update');
 });

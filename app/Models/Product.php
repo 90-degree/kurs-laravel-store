@@ -14,7 +14,7 @@ class Product extends Model
 
     public static function getAvailable($pages)
     {
-        return Product::where('isAvailable', 1)->paginate($pages);
+        return self::where('isAvailable', 1)->paginate($pages);
     }
 
     public function categories()

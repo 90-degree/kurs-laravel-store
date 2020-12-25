@@ -16,5 +16,9 @@ class DatabaseSeeder extends Seeder
     {
         //\App\Models\User::factory(10)->create();
         //Product::factory(20)->create();
+
+        \App\Models\User::all()->each(function ($user) {
+            $user->roles()->sync(1);
+        });
     }
 }
